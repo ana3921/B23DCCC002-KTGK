@@ -1,0 +1,110 @@
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card {
+    width: 450px;
+    padding: 30px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    background: white;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.25);
+}
+
+.inputNumber {
+    display: flex;
+    gap: 12px;
+    margin-top: 25px;
+    align-items: center;
+}
+
+.inputNumber input {
+    flex: 1;
+    padding: 10px;
+    font-size: 18px;
+    border-radius: 10px;
+    border: 2px solid #ddd;
+    transition: all 0.3s ease;
+}
+
+.inputNumber input:focus {
+    border-color: #ff85a2;
+    outline: none;
+    box-shadow: 0 0 8px rgba(255, 133, 162, 0.5);
+}
+
+.inputNumber button {
+    background-color: #ff85a2;
+    color: white;
+    border: none;
+    padding: 14px 30px;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    display: flex;
+    align-items: center;
+}
+
+.inputNumber button:hover {
+    background-color: #ff6b92;
+}
+
+.inputNumber button:disabled {
+    background-color: #e0e0e0;
+    cursor: not-allowed;
+}
+
+
+.feedback, .result {
+    margin-top: 40px;
+    font-size: 18px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 10px;
+}
+
+.feedback {
+    color: #28a745;
+}
+
+.result {
+    color: #007bff;
+}
+
+.machineGuess {
+    margin-top: 20px;
+    font-weight: bold;
+    color: #dc3545;
+}
+
+.resetButton {
+    margin-top: 25px;
+    background: #ff4757;
+    color: white;
+    padding: 14px 22px;
+    font-size: 18px;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    margin-left: 120px;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.resetButton:hover {
+    background: #e8414e;
+    transform: scale(1.05);
+}

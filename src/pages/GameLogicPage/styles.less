@@ -1,0 +1,187 @@
+// Tổng thể container
+.container {
+    padding: 2rem;
+    max-width: 450px;
+    margin: auto;
+    text-align: center;
+    background: #f9fafb;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+// Tiêu đề
+.title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+    color: #333;
+}
+
+// Nút chọn
+.choices {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.choiceButton {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+    background-color: #3b82f6;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    font-weight: bold;
+
+    &:hover {
+        background-color: #1d4ed8;
+        transform: scale(1.1);
+    }
+
+    &.activeChoice {
+        background-color: #2563eb;
+        box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+    }
+}
+
+// Kết quả trận đấu
+.resultContainer {
+    margin-top: 1.5rem;
+}
+
+.resultBox {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+// Kết quả
+.result {
+    font-size: 1.3rem;
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.win {
+    color: #16a34a;
+    animation: bounce 1s infinite;
+}
+
+.lose {
+    color: #dc2626;
+    animation: shake 0.5s ease-in-out infinite alternate;
+}
+
+.draw {
+    color: #9ca3af;
+    animation: pulse 1s infinite;
+}
+
+// Lịch sử trận đấu
+.historyTitle {
+    margin-top: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.history {
+    text-align: left;
+    margin-top: 1rem;
+    padding: 0;
+    list-style: none;
+    background: white;
+    padding: 1rem;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.historyItem {
+    border-bottom: 1px solid #e5e7eb;
+    padding: 0.5rem 0;
+    font-size: 1.1rem;
+    color: #333;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+// Nút chơi lại
+.resetButton {
+    padding: 10px 20px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+    margin-top: 1rem;
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+}
+
+// Hiển thị lựa chọn người chơi & máy
+.choiceText {
+    font-size: 1.2rem;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+
+// Màu sắc theo lựa chọn
+.keo {
+    color: #3b82f6;
+}
+
+.bua {
+    color: #f43f5e;
+}
+
+.bao {
+    color: #f59e0b;
+}
+
+// Hiệu ứng animation
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes shake {
+    25% {
+        transform: translateX(-3px);
+    }
+    50% {
+        transform: translateX(3px);
+    }
+}
+
+@keyframes pulse {
+    50% {
+        transform: scale(1.1);
+    }
+}
