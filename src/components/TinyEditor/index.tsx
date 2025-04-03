@@ -1,38 +1,8 @@
 import { EFileScope, uploadFile } from '@/services/uploadFile';
 import { Editor } from '@tinymce/tinymce-react';
 import './style.less';
-import React, { useState, useEffect } from 'react';
-import { Input } from 'antd';
 
-interface TinyEditorProps {
-  value?: string;
-  onChange?: (content: string) => void;
-}
-
-const TinyEditor: React.FC<TinyEditorProps> = ({ value = '', onChange }) => {
-  const [content, setContent] = useState(value);
-
-  useEffect(() => {
-    setContent(value);
-  }, [value]);
-
-  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newContent = e.target.value;
-    setContent(newContent);
-    onChange?.(newContent);
-  };
-
-  return (
-    <Input.TextArea
-      value={content}
-      onChange={handleChange}
-      placeholder="Nhập mô tả khóa học"
-      autoSize={{ minRows: 6, maxRows: 12 }}
-    />
-  );
-};
-
-const TinyEditorComponent = (props: {
+const TinyEditor = (props: {
 	value?: string;
 	onChange?: (val: string) => void;
 	/** Độ cao của editor sẽ tự động update theo nội dung đến 1 giá trị nhất định */
@@ -65,6 +35,36 @@ const TinyEditorComponent = (props: {
 	const triggerChange = (changedValue: string) => {
 		if (onChange) {
 			onChange(changedValue);
+		}
+	};
+
+	const imageHandler = (callback: any) => {
+		const input = document.createElement('input');
+		// Tạo input file và click luôn
+		input.setAttribute('type', 'file');
+		input.setAttribute('accept', 'image/*');
+		input.click();
+		// eslint-disable-next-line func-names
+		input.onchange = async function () {
+			const file = input.files?.[0] ?? '';
+
+			// Up ảnh lên và lấy url
+			const response = await uploadFile({
+				file,
+				scope: EFileScope.PUBLIC,
+			});
+			// Chèn ảnh vào dưới dạng url
+			callback(response?.data?.data?.url ?? '', {
+				alt: 'image',
+				uid: response?.data?.data,
+				name: response?.data?.data?.file?.name,
+				status: 'done',
+				// response?.data?.data,
+			});
+		};
+	};
+
+	return (
 		<>
 			<Editor
 				// apiKey='ihu6rlypska4k9h96g5x752rocpj133f20q41afy85shcrc5'
